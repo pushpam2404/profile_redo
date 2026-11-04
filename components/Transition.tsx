@@ -31,8 +31,22 @@ export function TransitionLayer() {
     const el = panel.current;
     if (!el || !covering.current) return;
     covering.current = false;
-    window.scrollTo(0, 0);
-    (window as Window & { __lenis?: { scrollTo: (y: number, o: object) => void } }).__lenis?.scrollTo(0, { immediate: true });
+    const lenis = (window as Window & { __lenis?: { scrollTo: (t: number | Element, o: object) => void; resize: () => void } }).__lenis;
+    const hashTarget = location.hash ? document.querySelector(location.hash) : null;
+    if (hashTarget) {
+      // arriving on a section link (e.g. /#contact): land on the section, not the top
+      // two frames: let the new page lay out, then re-measure Lenis (its scroll limit is cached from the old page)
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          lenis?.resize();
+          if (lenis) lenis.scrollTo(hashTarget, { immediate: true, force: true });
+          else hashTarget.scrollIntoView();
+        }),
+      );
+    } else {
+      window.scrollTo(0, 0);
+      lenis?.scrollTo(0, { immediate: true });
+    }
     gsap.to(el, {
       yPercent: -100,
       duration: 0.5,

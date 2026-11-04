@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   height: 100svh;
-  min-height: 560px;
+  min-height: min(560px, 100svh);
   overflow: hidden;
 }
 .stage {
