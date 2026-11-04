@@ -33,3 +33,10 @@ describe('site content', () => {
     expect(all).not.toMatch(/passionate|leverag|synerg/i);
   });
 });
+
+import { existsSync } from 'node:fs';
+describe('assets', () => {
+  it('every featured still exists on disk', () => {
+    for (const p of site.featured) expect(existsSync('public' + p.still), p.still).toBe(true);
+  });
+});
