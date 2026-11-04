@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { display, serif, sans, mono } from './fonts';
 import { Grain } from '@/components/Grain';
+import { SmoothScroll } from '@/components/SmoothScroll';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${display.variable} ${serif.variable} ${sans.variable} ${mono.variable}`}>
       <body>
+        <SmoothScroll />
         {children}
         <Grain />
       </body>
