@@ -1,0 +1,104 @@
+% Pushpam Raj Satyarthi — resume
+% Build with ./build.sh. resume.tex alone = site version (no phone).
+% resume-phone.tex (local only, git-excluded) defines \phonenumber and \input's this file.
+\documentclass[10pt]{article}
+\usepackage[a4paper,margin=0.5in,top=0.45in,bottom=0.4in]{geometry}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+
+\setmainfont{texgyreheros}[Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic]
+\definecolor{ink}{HTML}{121212}
+\definecolor{mute}{HTML}{5C5953}
+\definecolor{rule}{HTML}{BDB9B0}
+\color{ink}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\linespread{1.06}
+
+\titleformat{\section}{\footnotesize\bfseries\color{ink}}{}{0pt}{\MakeUppercase}[{\color{rule}\titlerule[0.6pt]}]
+\titlespacing*{\section}{0pt}{9pt}{4pt}
+\setlist[itemize]{leftmargin=1.05em,label={\color{mute}\textbullet},itemsep=1.2pt,topsep=2pt,parsep=0pt}
+
+\newcommand{\role}[4]{% title, right, subtitle, right
+  \textbf{#1}\hfill{\color{mute}\small #2}\\[-1pt]
+  {\small\itshape #3}\hfill{\color{mute}\small #4}\par\vspace{1pt}}
+\newcommand{\project}[3]{% name, stack, link
+  \textbf{#1}\;{\color{mute}\small\textperiodcentered\; #2}\hfill{\small #3}\par\vspace{1pt}}
+\newcommand{\lnk}[2]{\href{#1}{\color{ink}\underline{#2}}}
+
+\begin{document}
+
+{\fontsize{22}{24}\selectfont\bfseries Pushpam Raj Satyarthi}\\[3pt]
+{\small\color{mute}
+Software Engineer (backend \& data) \;\textperiodcentered\; Visakhapatnam, India \;\textperiodcentered\;
+\ifdefined\phonenumber \phonenumber \;\textperiodcentered\; \fi
+\lnk{mailto:prsatyarthi2404@gmail.com}{prsatyarthi2404@gmail.com}\\[1pt]
+\lnk{https://profile-redo.vercel.app}{profile-redo.vercel.app} \;\textperiodcentered\;
+\lnk{https://github.com/pushpam2404}{github.com/pushpam2404} \;\textperiodcentered\;
+\lnk{https://www.linkedin.com/in/pushpamrajsatyarthi}{linkedin.com/in/pushpamrajsatyarthi}}
+
+\vspace{6pt}
+{\small CSE undergraduate (CGPA 9.17) who goes deep on backend and data systems, then ships whatever else the product needs:
+APIs, ETL pipelines, ML models, frontends, even a native Mac app. Production backend experience on a live AI product. Targeting SDE roles.}
+
+\section{Experience}
+\role{Motherson Technology Services}{May -- Jun 2026}{Software Engineering Intern, AIML team}{Hyderabad, India}
+\begin{itemize}
+  \item Designed and shipped a hybrid persistence layer for an AI legal-research platform: SQLite for conversation metadata, Azure Blob Storage for full message payloads, end to end across a FastAPI backend and three React/TypeScript modules.
+  \item Wrote a 316-line FastAPI module from scratch with 9 REST endpoints (save, restore, search, archive) keeping Blob writes and SQLite metadata consistent, with storage isolated per product mode so sessions never leak across modules.
+  \item Audited the codebase and surfaced 14+ bugs, including broken mode isolation in all three modules; logged them in a 27-entry tracker and worked through root causes with the team.
+\end{itemize}
+
+\section{Projects}
+\project{Threat Detection Engine}{Python, XGBoost, SHAP, FastAPI, React/TS, Playwright, NetworkX}{\lnk{https://fake-acc.vercel.app}{live} \;\lnk{https://github.com/pushpam2404/fake_acc}{code}}
+\begin{itemize}
+  \item Fake-account and botnet detector for SIH-1775 (ITBP / MHA): two platform-specific XGBoost classifiers on 101,000+ labelled accounts, 96.87\% accuracy on Instagram/Facebook and 90.04\% on X, with SHAP reasons in plain English.
+  \item Found a mislabelled 50,000-row dataset capping X accuracy at 67\%; removing it and splitting feature pipelines (13 vs 7 features) added 23 points.
+  \item Live profile scans with headless Chromium, a NetworkX graph of coordinated accounts, a one-way case workflow and one-click PDF case files.
+\end{itemize}
+
+\project{Orbitune}{JavaScript, Three.js, Node.js/Express, IndexedDB, Spotify API}{\lnk{https://orbitune-music.vercel.app}{live} \;\lnk{https://github.com/pushpam2404/orbitune}{code}}
+\begin{itemize}
+  \item Turns a Spotify listening history into a 3D universe: an in-browser ETL parses full streaming exports (100 MB zips never leave the browser); my own map holds 3,363 artists and 51,772 plays.
+  \item Louvain community detection on an artist-similarity graph, a 3D UMAP layout and TF-IDF cluster names; OAuth tokens kept in an AES-256-GCM encrypted cookie, no database.
+\end{itemize}
+
+\project{Sluice}{Python, TOML, SQLite, zero dependencies}{\lnk{https://github.com/pushpam2404/sluice}{code}}
+\begin{itemize}
+  \item Data pipeline runner that refuses to fail quietly: checks between stages stop the run and name the exact row, column and value at fault. Run as an open-source practice ground for contributors.
+\end{itemize}
+
+\project{Global Banking ETL}{Python, Pandas, NumPy, SQL}{\lnk{https://github.com/pushpam2404/global-finance-etl}{code}}
+\begin{itemize}
+  \item Fault-tolerant multi-source ETL into a SQL warehouse; vectorised normalisation cut data redundancy 30\%, incremental delta loads replaced full refreshes, and pre-load checks block schema mismatches.
+\end{itemize}
+
+\project{Scrollo}{Swift, CGEventTap, Accessibility API, AVAudioEngine}{\lnk{https://github.com/pushpam2404/scrollo}{code}}
+\begin{itemize}
+  \item Free, open-source macOS menu-bar app that clicks and taps the trackpad as you scroll, staying silent at page edges by reading scroll position through the Accessibility API; idles near 0\% CPU.
+\end{itemize}
+
+\section{Skills}
+{\small
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Languages} & Python, SQL, TypeScript, JavaScript, C, C++, Java, Swift \\
+\textbf{Backend \& data} & FastAPI, Node.js, Express, ETL design, incremental loads, schema normalisation, data warehousing \\
+\textbf{Databases} & PostgreSQL, MySQL, SQLite, MongoDB (raw SQL, stored procedures, query optimisation) \\
+\textbf{ML} & XGBoost, scikit-learn, Pandas, NumPy, SHAP, SentenceTransformers \\
+\textbf{Cloud \& tools} & Azure Blob Storage, Vercel, Git, Linux shell, Playwright, Valgrind, GDB, Make \\
+\end{tabularx}}
+
+\section{Education \& certification}
+\role{GITAM University, Visakhapatnam}{2024 -- 2028}{B.Tech, Computer Science and Engineering}{CGPA 9.17}
+{\small IBM Data Engineering Professional Certificate (Coursera, 16 courses): Airflow, Kafka, Spark, Hadoop, data warehousing, BI.}
+
+\section{Leadership \& achievements}
+{\small
+President, IEEE-CS GITAM Vizag \;\textperiodcentered\; Domain Lead, Open Source, GitHub Community GITAM Vizag \\
+Smart India Hackathon internal-round qualifier, 2026 (SIH-1775) and 2025 (TripSync, built in 24 hours) \;\textperiodcentered\; Gitathon: full backend in 24 hours}
+
+\end{document}

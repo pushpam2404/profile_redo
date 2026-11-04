@@ -9,7 +9,7 @@ describe('site content', () => {
   });
 
   it('no phone number anywhere', () => {
-    expect(all).not.toMatch(/\+91|\b\d{5}\s?\d{5}\b/);
+    expect(all).not.toMatch(/\+91|\b\d{5}\s?\d{5}\b/); // no Indian mobile number in any form
   });
 
   it('email is exact', () => {
