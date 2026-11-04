@@ -1,0 +1,33 @@
+{
+  "name": "profile_redo",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "test": "vitest run",
+    "serve": "serve out -l 4173",
+    "e2e": "next build && playwright test"
+  },
+  "dependencies": {
+    "@splinetool/react-spline": "^4.1.0",
+    "@splinetool/runtime": "^2.0.136",
+    "gsap": "^3.15.1",
+    "lenis": "^1.3.27",
+    "next": "^16.4.5",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "shaders": "^4.0.6"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "serve": "^14.2.6",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}
