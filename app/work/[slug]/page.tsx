@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
+import { TransitionLink as Link } from '@/components/Transition';
 import { site } from '@/content/content';
 import { getProject, nextProject } from '@/content/helpers';
 import { Nav } from '@/components/Nav';

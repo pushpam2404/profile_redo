@@ -1,5 +1,5 @@
 'use client';
-import Link from 'next/link';
+import { TransitionLink as Link } from '@/components/Transition';
 import { useEffect, useRef, useState } from 'react';
 import { site } from '@/content/content';
 import { useCapabilities } from '@/lib/capabilities';

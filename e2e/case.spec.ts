@@ -31,3 +31,20 @@ test('unknown slug serves the 404 page', async ({ page }) => {
   const res = await page.goto('/work/nope/');
   expect(res?.status()).toBe(404);
 });
+
+test('transition does not break navigation', async ({ page }) => {
+  await page.goto('/');
+  await page.waitForTimeout(300);
+  const row = page.locator('[data-work-row]').first();
+  await row.scrollIntoViewIfNeeded();
+  await row.click();
+  await expect(page).toHaveURL(/\/work\/threat-detection\/$/, { timeout: 2000 });
+  await expect(page.locator('[data-transition-panel]')).toHaveAttribute('data-state', 'idle', { timeout: 2000 });
+});
+
+test('404 has a link home', async ({ page }) => {
+  await page.goto('/work/nope/');
+  await expect(page.locator('h1')).toHaveText(/Melted/);
+  await page.locator('[data-home-link]').click();
+  await expect(page).toHaveURL(/\/$/);
+});

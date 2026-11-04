@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { TransitionLink as Link } from '@/components/Transition';
 import { site } from '@/content/content';
 import styles from './Nav.module.css';
 

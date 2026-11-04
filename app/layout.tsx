@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { display, serif, sans, mono } from './fonts';
 import { Grain } from '@/components/Grain';
 import { SmoothScroll } from '@/components/SmoothScroll';
+import { TransitionLayer } from '@/components/Transition';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <SmoothScroll />
         {children}
+        <TransitionLayer />
         <Grain />
       </body>
     </html>
