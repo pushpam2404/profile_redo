@@ -6,8 +6,8 @@ export function Hero() {
   return (
     <section className={styles.hero} id="top">
       <HeroStage />
-      <p className={styles.note}>{site.heroNote}</p>
-      <div className={styles.status}>
+      <p className={styles.note} data-hero-note>{site.heroNote}</p>
+      <div className={styles.status} data-hero-status>
         <span className={styles.live}>
           <i className={styles.dot} aria-hidden="true" />
           <b>{site.status}</b>

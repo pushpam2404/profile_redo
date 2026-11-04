@@ -13,7 +13,7 @@
   border-top: 1px solid var(--line);
 }
 .aboutText { font-family: var(--f-serif); font-size: clamp(28px, 3.6vw, 58px); line-height: 1.08; }
-.word { opacity: 0.12; transition: opacity 0.4s; }
+.word { opacity: 0.18; transition: opacity 0.4s; }
 .word.on { opacity: 1; }
 .aboutText em { font-style: italic; }
 

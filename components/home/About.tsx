@@ -31,7 +31,8 @@ export function About() {
     const update = () => {
       raf = 0;
       const r = el.getBoundingClientRect();
-      const k = Math.min(Math.max((innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.35), 0), 1);
+      // fully lit once the paragraph's top reaches 35% of the viewport (reading position)
+      const k = Math.min(Math.max((innerHeight * 0.95 - r.top) / (innerHeight * 0.6), 0), 1);
       const lit = Math.round(k * spans.length);
       spans.forEach((s, i) => s.classList.toggle(styles.on, i < lit));
     };

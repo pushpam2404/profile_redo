@@ -1,7 +1,7 @@
 :root {
   --bg: #e9e7e2;
   --ink: #121212;
-  --mute: #6f6c66;
+  --mute: #5c5953;
   --line: #1212121f;
   --live: #2bb24c;
   --gutter: clamp(16px, 2.4vw, 32px);

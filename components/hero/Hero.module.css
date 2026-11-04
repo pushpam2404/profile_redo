@@ -71,6 +71,7 @@
   will-change: transform;
 }
 @media (max-width: 767px) {
+  .poster { inset: auto; left: 50%; top: 47%; width: 230vw; max-width: none; height: auto; translate: -50% -50%; -webkit-mask-image: radial-gradient(closest-side, #000 70%, transparent); mask-image: radial-gradient(closest-side, #000 70%, transparent); }
   .note { top: auto; bottom: calc(3vh + 17vw); max-width: 18ch; font-size: 20px; }
   .status { top: 84px; }
 }
