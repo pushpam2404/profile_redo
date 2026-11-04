@@ -38,6 +38,8 @@ export type Site = {
   resume: string;
   location: 'Visakhapatnam, IN';
   tz: 'Asia/Kolkata';
+  /** Published Spline scene URL (prod.spline.design/.../scene.splinecode); empty until published. */
+  splineScene: string;
   cgpa: 9.17;
   heroNote: string;
   status: string;

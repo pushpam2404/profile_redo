@@ -10,6 +10,7 @@ export const site: Site = {
   resume: '/Pushpam-Raj-Satyarthi-Resume.pdf',
   location: 'Visakhapatnam, IN',
   tz: 'Asia/Kolkata',
+  splineScene: '',
   cgpa: 9.17,
   heroNote: 'Backend, data & everything in between.',
   status: 'Open to SDE roles',

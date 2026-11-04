@@ -1,0 +1,30 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 22px var(--gutter);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #fff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+.nav a { text-decoration: none; pointer-events: auto; }
+.links { display: flex; gap: 18px; }
+.links a { position: relative; }
+.links a::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--ease-out);
+}
+.links a:hover::after { transform: scaleX(1); transform-origin: left; }
